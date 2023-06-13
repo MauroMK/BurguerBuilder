@@ -5,8 +5,26 @@ using UnityEngine;
 public class SandwichBuilder : MonoBehaviour
 {
     public List<Ingredient> selectedIngredients = new List<Ingredient>();
+    [SerializeField] private GameObject topBunPrefab;
+    [SerializeField] private GameObject bottomBunPrefab;
+
+    [SerializeField] private float ingredientYOffset;
+    [SerializeField] private float ingredientOffsetValue;
 
     private int requiredIngredients = 3;
+
+    public void OnIngredientButtonClick(Ingredient ingredient)
+    {
+        if (selectedIngredients.Count == 0)
+        {
+            InstantiateBuns();
+            AddIngredient(ingredient);
+        }
+        else
+        {
+            AddIngredient(ingredient);
+        }
+    }
 
     public void AddIngredient(Ingredient ingredient)
     {
@@ -18,7 +36,13 @@ public class SandwichBuilder : MonoBehaviour
             // Instantiates the prefab on the scene
             GameObject ingredientGO = Instantiate(ingredient.ingredientPrefab, transform);
 
-            //TODO Ajust the position on the sandwich
+            // Sets the vertical position of the ingredient based on the index
+            float ingredientYPosition = (selectedIngredients.Count - ingredientYOffset) * ingredientOffsetValue;;
+            
+            // Adjusts the vertical position of the ingredient
+            Vector3 ingredientPosition = ingredientGO.transform.position;
+            ingredientPosition.y = ingredientYPosition;
+            ingredientGO.transform.position = ingredientPosition;
         }
         else
         {
@@ -26,19 +50,12 @@ public class SandwichBuilder : MonoBehaviour
         }
     }
 
-    public void OnIngredientButtonClick(Ingredient ingredient)
+    private void InstantiateBuns()
     {
-        if (selectedIngredients.Count == 0)
-        {
-            Sandwich currentSandwich = SandwichManager.instance.GetCurrentSandwich();
-            selectedIngredients.Add(currentSandwich.topBunPrefab.GetComponent<Ingredient>());
-            selectedIngredients.Add(ingredient);
-            selectedIngredients.Add(currentSandwich.bottomBunPrefab.GetComponent<Ingredient>());
-        }
-        else
-        {
-            AddIngredient(ingredient);
-        }
+        GameObject topBunGO = Instantiate(topBunPrefab, transform);
+        GameObject bottomBunGO = Instantiate(bottomBunPrefab, transform);
+
+        // Faça outras ações necessárias, como ajustar a posição dos pães na tela.
     }
 
     public void CheckSandwich()

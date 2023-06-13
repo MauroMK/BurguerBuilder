@@ -7,7 +7,8 @@ public class SandwichManager : MonoBehaviour
     public static SandwichManager instance;
 
     public List<Sandwich> sandwiches;
-    private int currentSandwichIndex = 0;
+    
+    public int currentSandwichIndex = 0;
 
     #region Singleton
     private void Awake()

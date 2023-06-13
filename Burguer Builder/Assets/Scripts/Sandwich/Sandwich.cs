@@ -8,8 +8,5 @@ public class Sandwich : ScriptableObject
     [SerializeField] private string sandwichName;
     [SerializeField] private Sprite sandwichIcon;
     public List<Ingredient> ingredients;
-
-    public GameObject topBunPrefab;
-    public GameObject bottomBunPrefab;
 }
 
