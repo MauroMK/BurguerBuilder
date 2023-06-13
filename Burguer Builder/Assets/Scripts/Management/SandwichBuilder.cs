@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class SandwichBuilder : MonoBehaviour
 {
-    public List<Ingredient> selectedIngredients = new List<Ingredient>();
+    [Header("Bun Prefabs")]
     [SerializeField] private GameObject topBunPrefab;
     [SerializeField] private GameObject bottomBunPrefab;
+    private GameObject topBunGO;
+    private GameObject bottomBunGO;
 
+    [Header("Ingredients position")]
     [SerializeField] private float ingredientYOffset;
     [SerializeField] private float ingredientOffsetValue;
+
+    [Header("Ingredient List")]
+    public List<Ingredient> selectedIngredients = new List<Ingredient>();
 
     private int requiredIngredients = 3;
 
@@ -43,35 +49,38 @@ public class SandwichBuilder : MonoBehaviour
             Vector3 ingredientPosition = ingredientGO.transform.position;
             ingredientPosition.y = ingredientYPosition;
             ingredientGO.transform.position = ingredientPosition;
-        }
-        else
-        {
-            CheckSandwich();
+        
+            if (selectedIngredients.Count == requiredIngredients)
+            {
+                CheckSandwich();
+            }
         }
     }
 
     private void InstantiateBuns()
     {
-        GameObject topBunGO = Instantiate(topBunPrefab, transform);
-        GameObject bottomBunGO = Instantiate(bottomBunPrefab, transform);
+        this.topBunGO = Instantiate(topBunPrefab, transform);
+        this.bottomBunGO = Instantiate(bottomBunPrefab, transform);
     }
 
     public void CheckSandwich()
     {
         if (selectedIngredients.Count == requiredIngredients)
         {
+            ClearIngredientsAndBuns();
+
             Sandwich currentSandwich = SandwichManager.instance.GetCurrentSandwich();
             
             if (CheckIngredientsMatch(currentSandwich))
             {
                 //* The sandwich is correct
-                // Gamemanager.instance.AddPoints();
+                GameManager.instance.AddPoints(20);
                 // Throw the sandwich to the right;
             }
             else
             {
                 //* The sandwich is incorrect
-                // Gamemanager.instance.RemovePoints();
+                GameManager.instance.RemovePoints(10);
                 // Throw the sandwich to the left;
             }
 
@@ -83,6 +92,7 @@ public class SandwichBuilder : MonoBehaviour
         }
     }
 
+    //* Checks if the ingredients where chosen in the correct order
     private bool CheckIngredientsMatch(Sandwich sandwich)
     {
         List<Ingredient> sandwichIngredients = sandwich.ingredients;
@@ -101,6 +111,57 @@ public class SandwichBuilder : MonoBehaviour
         }
 
         return true;
+    }
+
+    //* Checks if the ingredients where chosen randomly
+    private bool CheckIngredientsRamdomly(Sandwich sandwich)
+    {
+        List<Ingredient> sandwichIngredients = sandwich.ingredients;
+
+        if (selectedIngredients.Count != sandwichIngredients.Count)
+        {
+            return false;
+        }
+
+        foreach (Ingredient ingredient in sandwichIngredients)
+        {
+            if (!selectedIngredients.Contains(ingredient))
+            {
+                return false;
+            }
+        }
+
+        foreach (Ingredient ingredient in selectedIngredients)
+        {
+            if (!sandwichIngredients.Contains(ingredient))
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private void ClearIngredientsAndBuns()
+    {
+        foreach (Transform child in transform)
+        {
+            if (child != transform && child.gameObject != this.topBunGO && child.gameObject != this.bottomBunGO)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+
+        // Destroys the buns
+        if (topBunGO != null)
+        {
+            Destroy(topBunGO);
+        }
+
+        if (bottomBunGO != null)
+        {
+            Destroy(bottomBunGO);
+        }
     }
 
 }

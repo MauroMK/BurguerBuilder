@@ -5,11 +5,10 @@ using UnityEngine;
 public class SandwichManager : MonoBehaviour
 {
     public static SandwichManager instance;
+    public int currentSandwichIndex = 0;
 
     public List<Sandwich> sandwiches;
     
-    [SerializeField] private int currentSandwichIndex = 0;
-
     #region Singleton
     private void Awake()
     {
