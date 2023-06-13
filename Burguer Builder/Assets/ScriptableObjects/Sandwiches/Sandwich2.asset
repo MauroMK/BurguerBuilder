@@ -10,13 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48008d248c4123c499262a1a044acee9, type: 3}
-  m_Name: Sandwich1
+  m_Name: Sandwich2
   m_EditorClassIdentifier: 
-  sandwichName: carne
+  sandwichName: queijo
   sandwichIcon: {fileID: 0}
   ingredients:
-  - {fileID: 11400000, guid: 73dad7d8f6b3856449df783b917a3373, type: 2}
-  - {fileID: 11400000, guid: 1605b7fac4ce15841ba3e53d2390ae6d, type: 2}
   - {fileID: 11400000, guid: e03f2571c3f58b0499866cbc70705ae7, type: 2}
-  topBunPrefab: {fileID: 1000011356331470, guid: 00a1a863a89404d46a228ffab189f332, type: 3}
-  bottomBunPrefab: {fileID: 1000011356331470, guid: 00a1a863a89404d46a228ffab189f332, type: 3}
+  - {fileID: 11400000, guid: 73dad7d8f6b3856449df783b917a3373, type: 2}
+  - {fileID: 11400000, guid: e859dc10a74137d4fbafd5f6643e950b, type: 2}

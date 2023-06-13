@@ -8,5 +8,5 @@ public class Ingredient : ScriptableObject
 {
     [SerializeField] private string ingredientName;
     [SerializeField] private Sprite icon;
-    [SerializeField] private GameObject ingredientPrefab;
+    public GameObject ingredientPrefab;
 }
