@@ -8,7 +8,7 @@ public class SandwichManager : MonoBehaviour
 
     public List<Sandwich> sandwiches;
     
-    public int currentSandwichIndex = 0;
+    [SerializeField] private int currentSandwichIndex = 0;
 
     #region Singleton
     private void Awake()
@@ -40,6 +40,9 @@ public class SandwichManager : MonoBehaviour
             sandwiches[randomIndex] = sandwiches[i];
             sandwiches[i] = temp;
         }
+        
+        // Reset the current sandwich index to zero
+        currentSandwichIndex = 0;
     }
 
     public Sandwich GetCurrentSandwich()

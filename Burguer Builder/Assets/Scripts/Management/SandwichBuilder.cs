@@ -46,7 +46,7 @@ public class SandwichBuilder : MonoBehaviour
         }
         else
         {
-            Debug.Log("Limite de ingredientes atingido!");
+            CheckSandwich();
         }
     }
 
@@ -54,8 +54,6 @@ public class SandwichBuilder : MonoBehaviour
     {
         GameObject topBunGO = Instantiate(topBunPrefab, transform);
         GameObject bottomBunGO = Instantiate(bottomBunPrefab, transform);
-
-        // Faça outras ações necessárias, como ajustar a posição dos pães na tela.
     }
 
     public void CheckSandwich()
