@@ -2,17 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sandwich : MonoBehaviour
+[CreateAssetMenu(fileName = "New Sandwich", menuName = "Sandwiches/Sandwich")]
+public class Sandwich : ScriptableObject 
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField] private string sandwichName;
+    [SerializeField] private Sprite sandwichIcon;
+    [SerializeField] private Ingredient[] ingredients;
 }
+
