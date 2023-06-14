@@ -7,6 +7,8 @@ public class SandwichManager : MonoBehaviour
     public static SandwichManager instance;
     public int currentSandwichIndex = 0;
 
+    private SandwichUIManager uiManager;
+
     public List<Sandwich> sandwiches;
     
     #region Singleton
@@ -25,6 +27,7 @@ public class SandwichManager : MonoBehaviour
 
     void Start()
     {
+        uiManager = FindObjectOfType<SandwichUIManager>();
         ShuffleSandwiches();
     }
 
@@ -42,6 +45,10 @@ public class SandwichManager : MonoBehaviour
         
         // Reset the current sandwich index to zero
         currentSandwichIndex = 0;
+
+        // Get the current sandwich after shuffling
+        Sandwich currentSandwich = GetCurrentSandwich();
+        uiManager.UpdateSandwichUI(currentSandwich);
     }
 
     public Sandwich GetCurrentSandwich()
@@ -54,17 +61,19 @@ public class SandwichManager : MonoBehaviour
         return null;
     }
 
-    public void DisplayNextSandwich()
+    public void DisplaySandwichUI()
     {
         if (currentSandwichIndex < sandwiches.Count)
         {
+            // Next sandwich
+            currentSandwichIndex++;
+
             Sandwich currentSandwich = sandwiches[currentSandwichIndex];
-            sandwiches.RemoveAt(currentSandwichIndex);
 
             // Refresh the UI with the current sandwich information (name, icon, ingredients)
+            uiManager.UpdateSandwichUI(currentSandwich);
 
-            // next sandwich
-            currentSandwichIndex++;
+            
         }
         else
         {

@@ -12,11 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48008d248c4123c499262a1a044acee9, type: 3}
   m_Name: Sandwich6
   m_EditorClassIdentifier: 
-  sandwichName: salsicha
-  sandwichIcon: {fileID: 0}
+  sandwichName: Ze colmeia
+  sandwichIcon: {fileID: 21300106, guid: 37607ec1aab56e349af84a980f685a4b, type: 3}
   ingredients:
   - {fileID: 11400000, guid: e859dc10a74137d4fbafd5f6643e950b, type: 2}
   - {fileID: 11400000, guid: 10e7d1af750940e4e96c7498bbfe6f8a, type: 2}
   - {fileID: 11400000, guid: 73dad7d8f6b3856449df783b917a3373, type: 2}
-  topBunPrefab: {fileID: 1000011356331470, guid: 00a1a863a89404d46a228ffab189f332, type: 3}
-  bottomBunPrefab: {fileID: 1000011356331470, guid: 00a1a863a89404d46a228ffab189f332, type: 3}

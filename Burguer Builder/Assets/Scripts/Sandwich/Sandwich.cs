@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Sandwich", menuName = "Sandwiches/Sandwich")]
 public class Sandwich : ScriptableObject 
 {
-    [SerializeField] private string sandwichName;
-    [SerializeField] private Sprite sandwichIcon;
+    public string sandwichName;
+    public Sprite sandwichIcon;
     public List<Ingredient> ingredients;
 }
 

@@ -88,7 +88,7 @@ public class SandwichBuilder : MonoBehaviour
             selectedIngredients.Clear();
 
             // Show the next sandwich
-            SandwichManager.instance.DisplayNextSandwich();
+            SandwichManager.instance.DisplaySandwichUI();
         }
     }
 
