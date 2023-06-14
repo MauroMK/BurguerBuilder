@@ -8,13 +8,12 @@ public class SandwichBuilder : MonoBehaviour
     [SerializeField] private GameObject topBunPrefab;
     [SerializeField] private GameObject bottomBunPrefab;
     
+    [Header("Ingredient List")]
+    [SerializeField] private List<Ingredient> selectedIngredients = new List<Ingredient>();
+
     private GameObject topBunGO;
     private GameObject bottomBunGO;
-    private float bunOffset = 0.025f;
-
-    [Header("Ingredient List")]
-    public List<Ingredient> selectedIngredients = new List<Ingredient>();
-
+    private float bunOffset = 0.030f;
     private int requiredIngredients = 3;
 
     public void OnIngredientButtonClick(Ingredient ingredient)
@@ -81,13 +80,13 @@ public class SandwichBuilder : MonoBehaviour
             if (CheckIngredientsMatch(currentSandwich))
             {
                 //* The sandwich is correct
-                GameManager.instance.AddPoints(20);
+                GameManager.instance.AddPoints();
                 // Throw the sandwich to the right;
             }
             else
             {
                 //* The sandwich is incorrect
-                GameManager.instance.RemovePoints(10);
+                GameManager.instance.RemovePoints();
                 // Throw the sandwich to the left;
             }
 

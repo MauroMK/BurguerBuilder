@@ -12,12 +12,13 @@ public class Timer : MonoBehaviour
     [SerializeField] private Gradient gradient;
     [SerializeField] private Image image;
 
-    [SerializeField] private float maxTime = 120f;
+    private float maxTimeCatcher;
     private float gameTotalTimer = 120f;
     private bool timerOn;
 
     private void Start() 
     {
+        maxTimeCatcher = GameManager.instance.maxTime;
         timerOn = true;
         GetCurrentFill();
     }
@@ -26,15 +27,15 @@ public class Timer : MonoBehaviour
     {
         if (timerOn)
         {
-            if (maxTime > 0)
+            if (maxTimeCatcher > 0)
             {
-                maxTime -= Time.deltaTime;
-                UpdateTimer(maxTime);
+                maxTimeCatcher -= Time.deltaTime;
+                UpdateTimer(maxTimeCatcher);
             }
             else
             {
-                Debug.Log("Time is up.");
-                maxTime = 0;
+                GameManager.instance.ShowEndgameScreen();
+                maxTimeCatcher = 0;
                 timerOn = false;
             }
         }
@@ -51,7 +52,7 @@ public class Timer : MonoBehaviour
 
     void GetCurrentFill()
     {
-        float fillAmount = maxTime / gameTotalTimer;  // Normalize the time between 0 and 1
+        float fillAmount = maxTimeCatcher / gameTotalTimer;  // Normalize the time between 0 and 1
         image.fillAmount = fillAmount;
 
         Color color = gradient.Evaluate(fillAmount); // Gets the color for the fill

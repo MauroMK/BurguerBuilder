@@ -10,12 +10,19 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    [Header("Score")]
-    public int score;
-    public TMP_Text scoreText;
+    [Header("Timer")]
+    public float maxTime = 120f;
 
+    [Header("Score")]
+    [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private TMP_Text finalScoreText;
+    [SerializeField] private int score;
+    
     [Header("GameOver")]
     [SerializeField] private GameObject gameoverScreen;
+
+    private int pointsToAdd = 20;
+    private int pointsToLose = 10;
 
     #region Singleton
     private void Awake()
@@ -31,29 +38,31 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    public void RestartGame()
+
+    public void LoadScene(string sceneName)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(sceneName);
     }
 
-    public void AddPoints(int pointsToAdd)
+    public void AddPoints()
     {
         score += pointsToAdd;
         UpdateScoreText();
     }
 
-    public void RemovePoints(int pointsToAdd)
+    public void RemovePoints()
     {
-        score -= pointsToAdd;
+        score -= pointsToLose;
         UpdateScoreText();
     }
 
     void UpdateScoreText()
     {
         scoreText.text = "Score: " + score.ToString();
+        finalScoreText.text = score.ToString();
     }
 
-    private void ShowEndgameScreen()
+    public void ShowEndgameScreen()
     {
         gameoverScreen.SetActive(true);
     }
