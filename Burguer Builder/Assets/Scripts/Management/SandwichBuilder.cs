@@ -7,12 +7,10 @@ public class SandwichBuilder : MonoBehaviour
     [Header("Bun Prefabs")]
     [SerializeField] private GameObject topBunPrefab;
     [SerializeField] private GameObject bottomBunPrefab;
+    
     private GameObject topBunGO;
     private GameObject bottomBunGO;
-
-    [Header("Ingredients position")]
-    [SerializeField] private float ingredientYOffset;
-    [SerializeField] private float ingredientOffsetValue;
+    private float bunOffset = 0.025f;
 
     [Header("Ingredient List")]
     public List<Ingredient> selectedIngredients = new List<Ingredient>();
@@ -23,7 +21,7 @@ public class SandwichBuilder : MonoBehaviour
     {
         if (selectedIngredients.Count == 0)
         {
-            InstantiateBuns();
+            InstantiateBottomBun();
             AddIngredient(ingredient);
         }
         else
@@ -41,26 +39,33 @@ public class SandwichBuilder : MonoBehaviour
 
             // Instantiates the prefab on the scene
             GameObject ingredientGO = Instantiate(ingredient.ingredientPrefab, transform);
-
-            // Sets the vertical position of the ingredient based on the index
-            float ingredientYPosition = (selectedIngredients.Count - ingredientYOffset) * ingredientOffsetValue;
-            
-            // Adjusts the vertical position of the ingredient
-            Vector3 ingredientPosition = ingredientGO.transform.position;
-            ingredientPosition.y = ingredientYPosition;
-            ingredientGO.transform.position = ingredientPosition;
         
             if (selectedIngredients.Count == requiredIngredients)
             {
+                InstantiateTopBun();
                 CheckSandwich();
             }
         }
     }
 
-    private void InstantiateBuns()
+    private void InstantiateTopBun()
     {
         this.topBunGO = Instantiate(topBunPrefab, transform);
+
+        //* Ajust the local position for the bun when it spawns, so it doesn't get stuck into other ingredient
+        Vector3 topBunPosition = this.topBunGO.transform.localPosition;
+        topBunPosition.y += bunOffset;
+        this.topBunGO.transform.localPosition = topBunPosition;
+    }
+
+    private void InstantiateBottomBun()
+    {
         this.bottomBunGO = Instantiate(bottomBunPrefab, transform);
+
+        //* Ajust the local position for the bun when it spawns, so it doesn't get stuck into other ingredient
+        Vector3 bottomBunPosition = this.bottomBunGO.transform.localPosition;
+        bottomBunPosition.y -= bunOffset;
+        this.bottomBunGO.transform.localPosition = bottomBunPosition;
     }
 
     public void CheckSandwich()

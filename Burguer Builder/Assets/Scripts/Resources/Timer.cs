@@ -42,6 +42,13 @@ public class Timer : MonoBehaviour
         GetCurrentFill();
     }
 
+
+    private void UpdateTimer(float currentTime)
+    {
+        int seconds = Mathf.Max(Mathf.FloorToInt(currentTime), 0); // Round to the nearest whole number, clamped to minimum 0 so he don't reach -1
+        timerTxt.text = seconds.ToString(); // Show only the seconds
+    }
+
     void GetCurrentFill()
     {
         float fillAmount = maxTime / gameTotalTimer;  // Normalize the time between 0 and 1
@@ -49,12 +56,5 @@ public class Timer : MonoBehaviour
 
         Color color = gradient.Evaluate(fillAmount); // Gets the color for the fill
         image.color = color; // Applies the color to the image
-    }
-
-    private void UpdateTimer(float currentTime)
-    {
-        currentTime += 1;
-        int seconds = Mathf.FloorToInt(currentTime); // Round to the nearest whole number
-        timerTxt.text = seconds.ToString(); // Show only the seconds
     }
 }

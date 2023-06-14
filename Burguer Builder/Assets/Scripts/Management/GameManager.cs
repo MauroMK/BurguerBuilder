@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     public int score;
     public TMP_Text scoreText;
 
+    [Header("GameOver")]
+    [SerializeField] private GameObject gameoverScreen;
+
     #region Singleton
     private void Awake()
     {
@@ -48,5 +51,10 @@ public class GameManager : MonoBehaviour
     void UpdateScoreText()
     {
         scoreText.text = "Score: " + score.ToString();
+    }
+
+    private void ShowEndgameScreen()
+    {
+        gameoverScreen.SetActive(true);
     }
 }

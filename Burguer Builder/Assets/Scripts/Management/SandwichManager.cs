@@ -72,13 +72,6 @@ public class SandwichManager : MonoBehaviour
 
             // Refresh the UI with the current sandwich information (name, icon, ingredients)
             uiManager.UpdateSandwichUI(currentSandwich);
-
-            
-        }
-        else
-        {
-            // All sandwiches were shown
-            // Show total points and the restart button
         }
     }
 }

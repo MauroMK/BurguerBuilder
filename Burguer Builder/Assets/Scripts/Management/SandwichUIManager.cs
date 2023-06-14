@@ -41,23 +41,6 @@ public class SandwichUIManager : MonoBehaviour
             ingredientImage.sprite = ingredient.icon;
         }
     }
-/* 
-    private void CreateIngredientImage(Ingredient ingredient)
-    {
-        // Adiciona as imagens dos ingredientes do sanduíche à UI
-        for (int i = 0; i < sandwich.ingredients.Count; i++)
-        {
-            if (i < ingredientImages.Count)
-            {
-                Image ingredientImage = ingredientImages[i];
-                Ingredient ingredient = sandwich.ingredients[i];
-
-                // Configura a sprite do ingrediente
-                ingredientImage.sprite = ingredient.icon;
-                ingredientImage.gameObject.SetActive(true);
-            }
-        }
-    } */
 
     private void ClearIngredientImages()
     {
