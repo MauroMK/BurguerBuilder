@@ -4,15 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    [Header("Values")]
+    [Header("Score")]
     public int score;
-    
-    [Header("References")]
     public TMP_Text scoreText;
 
     #region Singleton
@@ -28,11 +27,6 @@ public class GameManager : MonoBehaviour
         }
     }
     #endregion
-
-    private void Start() 
-    {
-        
-    }
 
     public void RestartGame()
     {

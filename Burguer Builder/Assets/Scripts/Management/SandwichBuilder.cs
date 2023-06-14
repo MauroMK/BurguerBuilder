@@ -43,7 +43,7 @@ public class SandwichBuilder : MonoBehaviour
             GameObject ingredientGO = Instantiate(ingredient.ingredientPrefab, transform);
 
             // Sets the vertical position of the ingredient based on the index
-            float ingredientYPosition = (selectedIngredients.Count - ingredientYOffset) * ingredientOffsetValue;;
+            float ingredientYPosition = (selectedIngredients.Count - ingredientYOffset) * ingredientOffsetValue;
             
             // Adjusts the vertical position of the ingredient
             Vector3 ingredientPosition = ingredientGO.transform.position;
@@ -67,10 +67,12 @@ public class SandwichBuilder : MonoBehaviour
     {
         if (selectedIngredients.Count == requiredIngredients)
         {
-            ClearIngredientsAndBuns();
+            Invoke("ClearIngredientsAndBuns", 0.5f);
+            //ClearIngredientsAndBuns();
 
             Sandwich currentSandwich = SandwichManager.instance.GetCurrentSandwich();
             
+            //* Change later here to check if its in order or not
             if (CheckIngredientsMatch(currentSandwich))
             {
                 //* The sandwich is correct
