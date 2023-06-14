@@ -39,11 +39,6 @@ public class GameManager : MonoBehaviour
     #endregion
 
 
-    public void LoadScene(string sceneName)
-    {
-        SceneManager.LoadScene(sceneName);
-    }
-
     public void AddPoints()
     {
         score += pointsToAdd;
