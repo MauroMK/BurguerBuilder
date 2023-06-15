@@ -25,7 +25,6 @@ public class SandwichBuilder : MonoBehaviour
 
             if (selectedIngredients.Count == 0)
             {
-                
                 InstantiateBottomBun();
                 AddIngredient(ingredient);
             }
