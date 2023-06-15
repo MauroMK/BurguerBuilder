@@ -3257,10 +3257,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: StartSound
+  - name: Start
     audioClip: {fileID: 8300000, guid: 5888016f748954049ba41b5ee9b94fbd, type: 3}
     volume: 1
     pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Click
+    audioClip: {fileID: 8300000, guid: dc9cd261059221642bd534b59b2f7ff4, type: 3}
+    volume: 0.26
+    pitch: 0.73
+    loop: 0
+    source: {fileID: 0}
+  - name: RollOver
+    audioClip: {fileID: 8300000, guid: 18de08b38a7b07e4aa138287c072f02e, type: 3}
+    volume: 0.26
+    pitch: 0.58
     loop: 0
     source: {fileID: 0}
 --- !u!4 &1383734258
@@ -3682,7 +3694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d1379f101d24264682c595ca9aa4ce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTime: 10
+  maxTime: 120
   scoreText: {fileID: 288890363}
   finalScoreText: {fileID: 383705471}
   score: 0
@@ -4387,6 +4399,7 @@ GameObject:
   - component: {fileID: 1934307068}
   - component: {fileID: 1934307067}
   - component: {fileID: 1934307066}
+  - component: {fileID: 1934307069}
   m_Layer: 5
   m_Name: BurguerButton
   m_TagString: Untagged
@@ -4509,6 +4522,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1934307064}
   m_CullTransparentMesh: 1
+--- !u!114 &1934307069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934307064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1383734257}
+          m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+          m_MethodName: PlaySound
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: RollOver
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1968029247
 GameObject:
   m_ObjectHideFlags: 0

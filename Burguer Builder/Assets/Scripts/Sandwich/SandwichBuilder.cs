@@ -15,18 +15,26 @@ public class SandwichBuilder : MonoBehaviour
     private GameObject bottomBunGO;
     private float bunOffset = 0.030f;
     private int requiredIngredients = 3;
+    private bool buttonsEnabled = true;
 
     public void OnIngredientButtonClick(Ingredient ingredient)
     {
-        if (selectedIngredients.Count == 0)
+        if (buttonsEnabled)
         {
-            InstantiateBottomBun();
-            AddIngredient(ingredient);
+            AudioManager.instance.PlaySound("Click");
+
+            if (selectedIngredients.Count == 0)
+            {
+                
+                InstantiateBottomBun();
+                AddIngredient(ingredient);
+            }
+            else
+            {
+                AddIngredient(ingredient);
+            }
         }
-        else
-        {
-            AddIngredient(ingredient);
-        }
+
     }
 
     public void AddIngredient(Ingredient ingredient)
@@ -71,8 +79,10 @@ public class SandwichBuilder : MonoBehaviour
     {
         if (selectedIngredients.Count == requiredIngredients)
         {
+            DisableButtons();
+
+            //* Calls the method after 0.5 seconds to have time until the sandwich is full
             Invoke("ClearIngredientsAndBuns", 0.5f);
-            //ClearIngredientsAndBuns();
 
             Sandwich currentSandwich = SandwichManager.instance.GetCurrentSandwich();
             
@@ -95,6 +105,8 @@ public class SandwichBuilder : MonoBehaviour
 
             // Show the next sandwich
             SandwichManager.instance.DisplaySandwichUI();
+
+            
         }
     }
 
@@ -168,6 +180,19 @@ public class SandwichBuilder : MonoBehaviour
         {
             Destroy(bottomBunGO);
         }
+
+        //* ENABLES THE UI TO ADD MORE INGREDIENTS
+        EnableButtons();
+    }
+
+    private void DisableButtons()
+    {
+        buttonsEnabled = false;
+    }
+
+    private void EnableButtons()
+    {
+        buttonsEnabled = true;
     }
 
 }
