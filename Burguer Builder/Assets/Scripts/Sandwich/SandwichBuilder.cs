@@ -17,6 +17,13 @@ public class SandwichBuilder : MonoBehaviour
     private int requiredIngredients = 3;
     private bool buttonsEnabled = true;
 
+    private HydraulicPress hydraulicPress;
+
+    private void Start() 
+    {
+        hydraulicPress = FindObjectOfType<HydraulicPress>();
+    }
+
     public void OnIngredientButtonClick(Ingredient ingredient)
     {
         if (buttonsEnabled)
@@ -80,8 +87,8 @@ public class SandwichBuilder : MonoBehaviour
         {
             DisableButtons();
 
-            //* Calls the method after 0.5 seconds to have time until the sandwich is full
-            Invoke("ClearIngredientsAndBuns", 0.5f);
+            // Calls the method after 0.5 seconds to have time until the sandwich is full
+            Invoke("ClearIngredientsAndBuns", 0.8f);
 
             Sandwich currentSandwich = SandwichManager.instance.GetCurrentSandwich();
             
@@ -90,7 +97,7 @@ public class SandwichBuilder : MonoBehaviour
             {
                 //* The sandwich is correct
                 GameManager.instance.AddPoints();
-                // Throw the sandwich to the right;
+                hydraulicPress.MovePressWithDelay();
             }
             else
             {
