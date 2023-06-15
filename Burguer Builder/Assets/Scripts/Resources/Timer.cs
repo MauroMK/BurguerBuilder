@@ -35,6 +35,7 @@ public class Timer : MonoBehaviour
             else
             {
                 GameManager.instance.ShowEndgameScreen();
+                AudioManager.instance.PlaySound("FinalBell");
                 maxTimeCatcher = 0;
                 timerOn = false;
             }

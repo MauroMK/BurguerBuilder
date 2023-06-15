@@ -12,7 +12,7 @@ public class MoveObjectZ : MonoBehaviour
     public void MoveCorrectSandwich()
     {
         LeanTween.delayedCall(delayTime, MoveHydraulicPressZ);   // Delay to let the sandwich get completed before goind to the trash
-        AudioManager.instance.PlaySound("HydraulicPress");
+        AudioManager.instance.PlaySound("CorrectSandwich");
     }
 
     private void MoveHydraulicPressZ()
