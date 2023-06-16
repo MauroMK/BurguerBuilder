@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48008d248c4123c499262a1a044acee9, type: 3}
+  m_Name: Savory Beef Melt
+  m_EditorClassIdentifier: 
+  sandwichName: Savory Beef Melt
+  sandwichIcon: {fileID: -1784466456, guid: 3a4d71ee4a41f2b4598af4a09ea88923, type: 3}
+  ingredients:
+  - {fileID: 11400000, guid: e03f2571c3f58b0499866cbc70705ae7, type: 2}
+  - {fileID: 11400000, guid: 10e7d1af750940e4e96c7498bbfe6f8a, type: 2}
+  - {fileID: 11400000, guid: e859dc10a74137d4fbafd5f6643e950b, type: 2}

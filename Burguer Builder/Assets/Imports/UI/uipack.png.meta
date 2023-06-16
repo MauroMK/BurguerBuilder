@@ -305,7 +305,7 @@ TextureImporter:
         width: 22
         height: 21
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -313,6 +313,27 @@ TextureImporter:
       bones: []
       spriteID: a538e0cf8154ca545836ddbaf2ef9a1d
       internalID: -311257740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MainMenuBG
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 36
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 6, y: 6, z: 6, w: 6}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c706cf013056fbd41846eab819bdb304
+      internalID: -1321185909
       vertices: []
       indices: 
       edges: []
@@ -334,6 +355,7 @@ TextureImporter:
       Clock_1: 958500908
       Clock_bg: 1695107331
       Ingredient_BG: 808392377
+      MainMenuBG: -1321185909
       Recipe_BG: 1580375300
       Sandwich_BG: -273580828
       Sandwich_BG_1: -1005308975
