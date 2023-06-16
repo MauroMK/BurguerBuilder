@@ -1276,6 +1276,30 @@ MonoBehaviour:
           m_StringArgument: MainMenu
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1383734257}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: StopSound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MainSceneSong
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1383734257}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MainMenuSong
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &300683100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2757,7 +2781,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a0e3634b9d3ed445b5f0eb071abe63a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomOrderMode: 0
   mainMenuPanel: {fileID: 0}
   dificultySelectionPanel: {fileID: 0}
   settingsPanel: {fileID: 0}

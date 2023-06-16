@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using System;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
 
     private float overallVolume = 1f;
+    private string mainMenu = "MainMenu";
+    private string mainScene = "MainScene";
 
     private void Awake() 
     {
@@ -38,10 +41,31 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    private void Start() 
+    private void OnEnable()
     {
-        UpdateOverallVolume(overallVolume);
-        //PlaySound("Music");    
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode) 
+    {
+        // Get the current scene name
+        string currentSceneName = SceneManager.GetActiveScene().name;
+
+        if (currentSceneName == mainMenu)
+        {
+            StopSound("MainSceneSong");
+            PlaySound("MainMenuSong");
+        }
+        else if (currentSceneName == mainScene)
+        {
+            StopSound("MainMenuSong");
+            PlaySound("MainSceneSong");
+        }   
     }
 
     public void UpdateOverallVolume(float value)
