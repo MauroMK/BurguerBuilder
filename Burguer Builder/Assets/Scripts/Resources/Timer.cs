@@ -11,15 +11,15 @@ public class Timer : MonoBehaviour
 
     [SerializeField] private Gradient gradient;
     [SerializeField] private Image image;
+    [SerializeField] private bool timerOn;
+
 
     private float maxTimeCatcher;
     private float gameTotalTimer = 120f;
-    private bool timerOn;
 
     private void Start() 
     {
         maxTimeCatcher = GameManager.instance.maxTime;
-        timerOn = true;
         GetCurrentFill();
     }
 

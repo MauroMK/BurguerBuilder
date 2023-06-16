@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Eggwich
   m_EditorClassIdentifier: 
   sandwichName: Eggwich
-  sandwichIcon: {fileID: 21300108, guid: 37607ec1aab56e349af84a980f685a4b, type: 3}
+  sandwichIcon: {fileID: -706893225, guid: 3a4d71ee4a41f2b4598af4a09ea88923, type: 3}
   ingredients:
   - {fileID: 11400000, guid: 73dad7d8f6b3856449df783b917a3373, type: 2}
-  - {fileID: 11400000, guid: 73dad7d8f6b3856449df783b917a3373, type: 2}
+  - {fileID: 11400000, guid: e859dc10a74137d4fbafd5f6643e950b, type: 2}
   - {fileID: 11400000, guid: 73dad7d8f6b3856449df783b917a3373, type: 2}

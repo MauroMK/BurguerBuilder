@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48008d248c4123c499262a1a044acee9, type: 3}
   m_Name: MeatBurguer
   m_EditorClassIdentifier: 
-  sandwichName: MeatBurguer
-  sandwichIcon: {fileID: 21300052, guid: 37607ec1aab56e349af84a980f685a4b, type: 3}
+  sandwichName: Meat Burguer
+  sandwichIcon: {fileID: -1784466456, guid: 3a4d71ee4a41f2b4598af4a09ea88923, type: 3}
   ingredients:
-  - {fileID: 11400000, guid: 73dad7d8f6b3856449df783b917a3373, type: 2}
-  - {fileID: 11400000, guid: 1605b7fac4ce15841ba3e53d2390ae6d, type: 2}
+  - {fileID: 11400000, guid: e859dc10a74137d4fbafd5f6643e950b, type: 2}
+  - {fileID: 11400000, guid: e859dc10a74137d4fbafd5f6643e950b, type: 2}
   - {fileID: 11400000, guid: e03f2571c3f58b0499866cbc70705ae7, type: 2}

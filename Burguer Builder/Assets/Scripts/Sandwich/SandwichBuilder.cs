@@ -30,8 +30,6 @@ public class SandwichBuilder : MonoBehaviour
     {
         if (buttonsEnabled)
         {
-            AudioManager.instance.PlaySound("Click");
-
             if (selectedIngredients.Count == 0)
             {
                 InstantiateBottomBun();
@@ -54,6 +52,8 @@ public class SandwichBuilder : MonoBehaviour
 
             // Instantiates the prefab on the scene
             GameObject ingredientGO = Instantiate(ingredient.ingredientPrefab, transform);
+
+            AudioManager.instance.PlaySound("Pop");
         
             if (selectedIngredients.Count == requiredIngredients)
             {
