@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     private int pointsToAdd = 20;
     private int pointsToLose = 10;
+    private string mainMenu = "MainMenu";
 
     #region Singleton
     private void Awake()
@@ -60,5 +61,15 @@ public class GameManager : MonoBehaviour
     public void ShowEndgameScreen()
     {
         gameoverScreen.SetActive(true);
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene(mainMenu);
     }
 }

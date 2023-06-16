@@ -19,11 +19,13 @@ public class SandwichBuilder : MonoBehaviour
 
     private MoveObjectX hydraulicPressX;
     private MoveObjectZ hydraulicPressZ;
+    private GamemodeTracker gameMode;
 
     private void Start() 
     {
         hydraulicPressX = FindObjectOfType<MoveObjectX>();
         hydraulicPressZ = FindObjectOfType<MoveObjectZ>();
+        gameMode = FindObjectOfType<GamemodeTracker>();
     }
 
     public void OnIngredientButtonClick(Ingredient ingredient)
@@ -94,18 +96,38 @@ public class SandwichBuilder : MonoBehaviour
 
             Sandwich currentSandwich = SandwichManager.instance.GetCurrentSandwich();
             
-            //* Change later here to check if its in order or not
-            if (CheckIngredientsMatch(currentSandwich))
+            //* Gamemode Correct Order
+            if (gameMode.randomOrderMode == false)
             {
-                //* The sandwich is correct
-                GameManager.instance.AddPoints();
-                hydraulicPressZ.MoveCorrectSandwich();   // Throw the sandwich to the delivery box;
+                if (CheckIngredientsMatch(currentSandwich))
+                {
+                    //* The sandwich is correct
+                    GameManager.instance.AddPoints();
+                    hydraulicPressZ.MoveCorrectSandwich();   // Throw the sandwich to the delivery box;
+                }
+                else
+                {
+                    //* The sandwich is incorrect
+                    GameManager.instance.RemovePoints();
+                    hydraulicPressX.MoveWrongSandwich();   // Throw the sandwich to the trash;
+                }
             }
-            else
+
+            //* Gamemode Random Order
+            if (gameMode.randomOrderMode == true)
             {
-                //* The sandwich is incorrect
-                GameManager.instance.RemovePoints();
-                hydraulicPressX.MoveWrongSandwich();   // Throw the sandwich to the trash;
+                if (CheckIngredientsRamdomly(currentSandwich))
+                {
+                    //* The sandwich is correct
+                    GameManager.instance.AddPoints();
+                    hydraulicPressZ.MoveCorrectSandwich();   // Throw the sandwich to the delivery box;
+                }
+                else
+                {
+                    //* The sandwich is incorrect
+                    GameManager.instance.RemovePoints();
+                    hydraulicPressX.MoveWrongSandwich();   // Throw the sandwich to the trash;
+                }
             }
 
             // Clear the ingredient list for the next sandwich
@@ -114,7 +136,6 @@ public class SandwichBuilder : MonoBehaviour
             // Show the next sandwich
             SandwichManager.instance.DisplaySandwichUI();
 
-            
         }
     }
 

@@ -13,7 +13,7 @@ public class SandwichUIManager : MonoBehaviour
 
     private void Start() 
     {
-        // Exibe o sanduíche ativo no início do jogo
+        // Show the active sandwich when the game starts
         Sandwich currentSandwich = SandwichManager.instance.GetCurrentSandwich();
     }
 
@@ -28,13 +28,14 @@ public class SandwichUIManager : MonoBehaviour
         // Remove the old images
         ClearIngredientImages();
 
-        // Adiciona os ícones dos ingredientes do sanduíche à UI
+        // Shows the images of each ingredient
         foreach (Ingredient ingredient in sandwich.ingredients)
         {
-            // Cria um novo Image para o ingrediente
+            // Creates a new image for the ingredient
             GameObject ingredientImageObj = new GameObject("IngredientImage", typeof(RectTransform), typeof(Image));
             
             // Define o transform parent como o ingredientContainer
+            // Defines the ingredientContainer as the transform parent
             ingredientImageObj.transform.SetParent(ingredientContainer, false);
 
             Image ingredientImage = ingredientImageObj.GetComponent<Image>();

@@ -364,10 +364,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 663977007}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 1527163982}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: RestartGame
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1264,10 +1264,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 663977007}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 1527163982}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ReturnToMainMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2757,6 +2757,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a0e3634b9d3ed445b5f0eb071abe63a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randomOrderMode: 0
+  mainMenuPanel: {fileID: 0}
+  dificultySelectionPanel: {fileID: 0}
+  settingsPanel: {fileID: 0}
 --- !u!4 &663977008
 Transform:
   m_ObjectHideFlags: 0
@@ -2896,7 +2900,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5888016f748954049ba41b5ee9b94fbd, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.46
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4144,7 +4148,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: FinalBell
     audioClip: {fileID: 8300000, guid: 457f4fc20c3f5eb498ed6180b85b6081, type: 3}
-    volume: 0.45
+    volume: 0.23
     pitch: 0.89
     loop: 0
     source: {fileID: 0}
@@ -4607,7 +4611,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1473223145
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4732,7 +4736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d1379f101d24264682c595ca9aa4ce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTime: 120
+  maxTime: 5
   scoreText: {fileID: 288890363}
   finalScoreText: {fileID: 383705471}
   score: 0
@@ -6076,7 +6080,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c0b47a6ecdce70b439a2a8365f15b057, type: 2}
+  - {fileID: 2100000, guid: d74f262ac98ce5c45845bcf075a1aa57, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6226,7 +6230,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c0b47a6ecdce70b439a2a8365f15b057, type: 2}
+  - {fileID: 2100000, guid: d74f262ac98ce5c45845bcf075a1aa57, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
