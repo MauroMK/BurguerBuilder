@@ -15,9 +15,9 @@ public class SandwichBuilder : MonoBehaviour
     private int sandwichPointAdd = 20;
     private int sandwichPointRemove = 10;
     private int correctSandwichCount = 0;
-    private int comboCount = 0;
     private int comboMultiplier = 5;
-    private float comboTimer = 0f;
+    public int comboCount = 0;
+    public float comboTimer = 0f;
     private float comboTimeLimit = 5f;
     #endregion
 
@@ -262,7 +262,7 @@ public class SandwichBuilder : MonoBehaviour
         comboCount = 0;
         correctSandwichCount = 0;
 
-        // Resets the sandwich value back to the original
+        // Reset the sandwich value back to the original
         sandwichPointAdd = 20;
     }
 
@@ -275,7 +275,7 @@ public class SandwichBuilder : MonoBehaviour
 
             if (comboTimer <= 0f)
             {
-                // Combo time is over, resets the values
+                // Combo time is over, reset the values
                 comboCount = 0;
                 correctSandwichCount = 0;
                 sandwichPointAdd = 20;
