@@ -82,6 +82,11 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public float GetOverallVolume()
+    {
+        return overallVolume;
+    }
+
     public void PlaySound(string soundName) 
     {
         Sound s = Array.Find(sounds, sound => sound.name == soundName);

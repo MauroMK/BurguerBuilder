@@ -11,6 +11,12 @@ public class VolumeSlider : MonoBehaviour
         slider.onValueChanged.AddListener(OnSliderValueChanged);
     }
 
+    private void Start() 
+    {
+        // Get the value from the audio to refresh the slider value
+        slider.value = AudioManager.instance.GetOverallVolume();    
+    }
+
     private void OnSliderValueChanged(float value)
     {
         AudioManager.instance.UpdateOverallVolume(value);

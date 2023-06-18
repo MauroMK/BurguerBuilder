@@ -4377,9 +4377,9 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: CorrectSandwich
-    audioClip: {fileID: 8300000, guid: f09260b9274098443aae1d15d2c30078, type: 3}
-    volume: 0.335
-    pitch: 1
+    audioClip: {fileID: 8300000, guid: 681a87d009b8ef746bd8eafc1cf7cb48, type: 3}
+    volume: 0.345
+    pitch: 0.86
     loop: 0
     source: {fileID: 0}
   - name: HydraulicPress
