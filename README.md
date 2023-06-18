@@ -4,7 +4,7 @@ A 3D burguer builder game for the VPT test.
 Features
 
 - Every sandwich is a scriptable object;
-- Clean UI during the gameplay;
+- Clean and simple UI in-game;
 - 2 game modes: Random order and Correct order;
 - Audio manager with diferent sounds;
 - Timer that updates every frame, and the background color changes based in the current time;
