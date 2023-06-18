@@ -3187,9 +3187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a0e3634b9d3ed445b5f0eb071abe63a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenuPanel: {fileID: 0}
-  dificultySelectionPanel: {fileID: 0}
-  settingsPanel: {fileID: 0}
+  menuPanels: []
 --- !u!4 &663977008
 Transform:
   m_ObjectHideFlags: 0
@@ -5882,7 +5880,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d1379f101d24264682c595ca9aa4ce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTime: 20
+  maxTime: 120
   correctOrderNumbers: {fileID: 799620015}
   scoreText: {fileID: 288890363}
   finalScoreText: {fileID: 383705471}

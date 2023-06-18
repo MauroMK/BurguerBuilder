@@ -6,9 +6,7 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] private CanvasGroup mainMenuPanel;
-    [SerializeField] private CanvasGroup dificultySelectionPanel;
-    [SerializeField] private CanvasGroup settingsPanel;
+    [SerializeField] private CanvasGroup[] menuPanels;
 
     private float fadeSpeed = 0.5f;
     private GamemodeTracker gamemodeTracker;
@@ -19,73 +17,33 @@ public class MenuManager : MonoBehaviour
     }
 
     #region Menuhandler
-    public void ToDificultySelection()
+    private void ShowMenu(CanvasGroup menu)
     {
-        HideMainMenu();
-        Invoke("ShowDificultySelection", fadeSpeed);
+        LeanTween.alphaCanvas(menu, 1, fadeSpeed);
+        menu.interactable = true;
+        menu.blocksRaycasts = true;
     }
 
-    public void ToMainMenuFromDificulty()
+    private void HideMenu(CanvasGroup menu)
     {
-        HideDificultySelection();
-        Invoke("ShowMainMenu", fadeSpeed);
+        LeanTween.alphaCanvas(menu, 0, fadeSpeed);
+        menu.interactable = false;
+        menu.blocksRaycasts = false;
     }
 
-    public void ToMainMenuFromSettings()
+    public void SwitchMenu(CanvasGroup targetMenu)
     {
-        HideSettingsMenu();
-        Invoke("ShowMainMenu", fadeSpeed);
-    }
-
-    public void ToSettingsMenu()
-    {
-        HideMainMenu();
-        Invoke("ShowSettingsMenu", fadeSpeed);
-    }
-
-    //* Main Menu
-    private void ShowMainMenu()
-    {
-        LeanTween.alphaCanvas(mainMenuPanel, 1, fadeSpeed);
-        mainMenuPanel.interactable = true;
-        mainMenuPanel.blocksRaycasts = true;
-    }
-
-    private void HideMainMenu()
-    {
-        LeanTween.alphaCanvas(mainMenuPanel, 0, fadeSpeed);
-        mainMenuPanel.interactable = false;
-        mainMenuPanel.blocksRaycasts = false;
-    }
-
-    //* Dificulty Selection
-    private void ShowDificultySelection()
-    {
-        LeanTween.alphaCanvas(dificultySelectionPanel, 1, fadeSpeed);
-        dificultySelectionPanel.interactable = true;
-        dificultySelectionPanel.blocksRaycasts = true;
-    }
-
-    private void HideDificultySelection()
-    {
-        LeanTween.alphaCanvas(dificultySelectionPanel, 0, fadeSpeed);
-        dificultySelectionPanel.interactable = false;
-        dificultySelectionPanel.blocksRaycasts = false;
-    }
-
-    //* Settings Menu
-    private void ShowSettingsMenu()
-    {
-        LeanTween.alphaCanvas(settingsPanel, 1, fadeSpeed);
-        settingsPanel.interactable = true;
-        settingsPanel.blocksRaycasts = true;
-    }
-
-    private void HideSettingsMenu()
-    {
-        LeanTween.alphaCanvas(settingsPanel, 0, fadeSpeed);
-        settingsPanel.interactable = false;
-        settingsPanel.blocksRaycasts = false;
+        foreach (CanvasGroup menu in menuPanels)
+        {
+            if (menu == targetMenu)
+            {
+                ShowMenu(menu);
+            }
+            else
+            {
+                HideMenu(menu);
+            }
+        }
     }
     #endregion
 

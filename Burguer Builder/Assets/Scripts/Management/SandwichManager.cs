@@ -68,6 +68,12 @@ public class SandwichManager : MonoBehaviour
             // Next sandwich
             currentSandwichIndex++;
 
+            if (currentSandwichIndex >= sandwiches.Count)
+            {
+                // If the player get to the last sandwich, the index goes back to zero to restart the list
+                currentSandwichIndex = 0;
+            }
+
             Sandwich currentSandwich = sandwiches[currentSandwichIndex];
 
             // Refresh the UI with the current sandwich information (name, icon, ingredients)
