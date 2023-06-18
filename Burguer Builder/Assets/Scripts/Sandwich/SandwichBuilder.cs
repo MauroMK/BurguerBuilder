@@ -261,6 +261,7 @@ public class SandwichBuilder : MonoBehaviour
         // Reset the combo counter
         comboCount = 0;
         correctSandwichCount = 0;
+        comboTimer = 0;
 
         // Reset the sandwich value back to the original
         sandwichPointAdd = 20;

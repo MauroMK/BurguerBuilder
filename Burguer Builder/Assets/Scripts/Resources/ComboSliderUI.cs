@@ -22,9 +22,10 @@ public class ComboSliderUI : MonoBehaviour
         UpdateComboUI();    
     }
 
-    private void UpdateComboUI()
+    public void UpdateComboUI()
     {
         comboSlider.value = sandwichBuilder.comboTimer;
-        comboText.text = "Combo: " + sandwichBuilder.comboCount.ToString();
+
+        comboText.text = "Streak: " + sandwichBuilder.comboCount.ToString();
     }
 }
