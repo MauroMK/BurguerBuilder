@@ -10,4 +10,5 @@ public class GamemodeTracker : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);   
     }
+
 }

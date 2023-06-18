@@ -13,6 +13,10 @@ public class GameManager : MonoBehaviour
     [Header("Timer")]
     public float maxTime = 120f;
 
+    [Header("Order")]
+    [SerializeField] private GameObject correctOrderNumbers;
+    private GamemodeTracker gamemode;
+
     [Header("Score")]
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text finalScoreText;
@@ -43,6 +47,19 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    private void Start() 
+    {
+        gamemode = FindObjectOfType<GamemodeTracker>();
+
+        if (gamemode.randomOrderMode == true)
+        {
+            correctOrderNumbers.SetActive(false);
+        }
+        else
+        {
+            correctOrderNumbers.SetActive(true);
+        }
+    }
 
     private void Update() 
     {
