@@ -11,6 +11,16 @@ public class SandwichBuilder : MonoBehaviour
     [Header("Ingredient List")]
     [SerializeField] private List<Ingredient> selectedIngredients = new List<Ingredient>();
 
+    #region Combo
+    private int sandwichPointAdd = 20;
+    private int sandwichPointRemove = 10;
+    private int correctSandwichCount = 0;
+    private int comboCount = 0;
+    private int comboMultiplier = 5;
+    private float comboTimer = 0f;
+    private float comboTimeLimit = 5f;
+    #endregion
+
     private GameObject topBunGO;
     private GameObject bottomBunGO;
     private float bunOffset = 0.030f;
@@ -26,6 +36,11 @@ public class SandwichBuilder : MonoBehaviour
         hydraulicPressX = FindObjectOfType<MoveObjectX>();
         hydraulicPressZ = FindObjectOfType<MoveObjectZ>();
         gameMode = FindObjectOfType<GamemodeTracker>();
+    }
+
+    private void Update() 
+    {
+        ComboTimerHandler();
     }
 
     public void OnIngredientButtonClick(Ingredient ingredient)
@@ -101,15 +116,11 @@ public class SandwichBuilder : MonoBehaviour
             {
                 if (CheckIngredientsMatch(currentSandwich))
                 {
-                    //* The sandwich is correct
-                    GameManager.instance.AddPoints();
-                    hydraulicPressZ.MoveCorrectSandwich();   // Throw the sandwich to the delivery box;
+                    MadeCorrectSandwich();
                 }
                 else
                 {
-                    //* The sandwich is incorrect
-                    GameManager.instance.RemovePoints();
-                    hydraulicPressX.MoveWrongSandwich();   // Throw the sandwich to the trash;
+                    MadeWrongSandwich();
                 }
             }
 
@@ -118,15 +129,11 @@ public class SandwichBuilder : MonoBehaviour
             {
                 if (CheckIngredientsRamdomly(currentSandwich))
                 {
-                    //* The sandwich is correct
-                    GameManager.instance.AddPoints();
-                    hydraulicPressZ.MoveCorrectSandwich();   // Throw the sandwich to the delivery box;
+                    MadeCorrectSandwich();
                 }
                 else
                 {
-                    //* The sandwich is incorrect
-                    GameManager.instance.RemovePoints();
-                    hydraulicPressX.MoveWrongSandwich();   // Throw the sandwich to the trash;
+                    MadeWrongSandwich();
                 }
             }
 
@@ -222,6 +229,58 @@ public class SandwichBuilder : MonoBehaviour
     private void EnableButtons()
     {
         buttonsEnabled = true;
+    }
+
+    private void MadeCorrectSandwich()
+    {
+        // Adds points to the GameManager based on the combo counter
+        // If the combo counter is greater than zero, adds the sandwich value plus the combo multiplier
+        // Otherwise, adds only the sandwich value
+        GameManager.instance.AddPoints(comboCount >= 5 ? sandwichPointAdd + (comboMultiplier * (comboCount / 5)) : sandwichPointAdd);
+        hydraulicPressZ.MoveCorrectSandwich();  // Throw the sandwich to the delivery box
+
+        // Increase the sandwich counter and the combo counter
+        correctSandwichCount++;
+        comboCount++;
+
+        // Restart the combo timer
+        comboTimer = comboTimeLimit;
+
+        if (correctSandwichCount % 5 == 0 && comboCount > 0)
+        {
+            // Increase the sandwich value for every 5 sandwiches made correct
+            sandwichPointAdd += 5;
+        }
+    }
+
+    private void MadeWrongSandwich()
+    {
+        GameManager.instance.RemovePoints(sandwichPointRemove);
+        hydraulicPressX.MoveWrongSandwich();   // Throw the sandwich to the trash;
+
+        // Reset the combo counter
+        comboCount = 0;
+        correctSandwichCount = 0;
+
+        // Resets the sandwich value back to the original
+        sandwichPointAdd = 20;
+    }
+
+    private void ComboTimerHandler()
+    {
+        // Updates the combo timer
+        if (comboCount > 0)
+        {
+            comboTimer -= Time.deltaTime;
+
+            if (comboTimer <= 0f)
+            {
+                // Combo time is over, resets the values
+                comboCount = 0;
+                correctSandwichCount = 0;
+                sandwichPointAdd = 20;
+            }
+        }
     }
 
 }

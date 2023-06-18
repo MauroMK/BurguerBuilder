@@ -29,8 +29,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     private bool isPaused;
 
-    private int pointsToAdd = 20;
-    private int pointsToLose = 10;
+    /* public int pointsToAdd = 20;
+    public int pointsToLose = 10; */
     private string mainMenu = "MainMenu";
 
     #region Singleton
@@ -76,15 +76,15 @@ public class GameManager : MonoBehaviour
         }    
     }
 
-    public void AddPoints()
+    public void AddPoints(int pointsToAdd)
     {
         score += pointsToAdd;
         UpdateScoreText();
     }
 
-    public void RemovePoints()
+    public void RemovePoints(int pointsToRemove)
     {
-        score -= pointsToLose;
+        score -= pointsToRemove;
         UpdateScoreText();
     }
 
@@ -123,5 +123,10 @@ public class GameManager : MonoBehaviour
         isPaused = false;
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
+    }
+
+    internal void AddPoints(object value)
+    {
+        throw new NotImplementedException();
     }
 }
