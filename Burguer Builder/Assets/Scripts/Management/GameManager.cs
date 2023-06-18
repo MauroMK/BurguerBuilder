@@ -18,8 +18,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text finalScoreText;
     [SerializeField] private int score;
     
-    [Header("GameOver")]
+    [Header("Game Over")]
     [SerializeField] private GameObject gameoverScreen;
+
+    [Header("Pause Menu")]
+    [SerializeField] private GameObject pauseMenu;
+    private bool isPaused;
 
     private int pointsToAdd = 20;
     private int pointsToLose = 10;
@@ -39,6 +43,21 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+
+    private void Update() 
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isPaused)
+            {
+                ResumeGame();
+            }
+            else
+            {
+                PauseGame();
+            }
+        }    
+    }
 
     public void AddPoints()
     {
@@ -70,6 +89,22 @@ public class GameManager : MonoBehaviour
 
     public void ReturnToMainMenu()
     {
+        isPaused = false;
+        Time.timeScale = 1f;
         SceneManager.LoadScene(mainMenu);
+    }
+
+    private void PauseGame()
+    {
+        isPaused = true;
+        Time.timeScale = 0f;
+        pauseMenu.SetActive(true);
+    }
+
+    public void ResumeGame()
+    {
+        isPaused = false;
+        Time.timeScale = 1f;
+        pauseMenu.SetActive(false);
     }
 }

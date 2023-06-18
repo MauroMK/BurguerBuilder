@@ -94,6 +94,7 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
+    // Gets the gamemode
     public void SetRandomOrderMode(bool randomOrder)
     {
         gamemodeTracker.randomOrderMode = randomOrder;

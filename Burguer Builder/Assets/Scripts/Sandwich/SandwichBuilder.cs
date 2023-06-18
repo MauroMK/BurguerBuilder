@@ -91,7 +91,7 @@ public class SandwichBuilder : MonoBehaviour
         {
             DisableButtons();
 
-            // Calls the method after 0.5 seconds to have time until the sandwich is full
+            // Calls the method after 1 second to have time until the sandwich is full
             Invoke("ClearIngredientsAndBuns", 1f);
 
             Sandwich currentSandwich = SandwichManager.instance.GetCurrentSandwich();

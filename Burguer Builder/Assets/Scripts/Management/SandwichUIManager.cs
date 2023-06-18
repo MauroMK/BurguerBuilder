@@ -34,7 +34,6 @@ public class SandwichUIManager : MonoBehaviour
             // Creates a new image for the ingredient
             GameObject ingredientImageObj = new GameObject("IngredientImage", typeof(RectTransform), typeof(Image));
             
-            // Define o transform parent como o ingredientContainer
             // Defines the ingredientContainer as the transform parent
             ingredientImageObj.transform.SetParent(ingredientContainer, false);
 

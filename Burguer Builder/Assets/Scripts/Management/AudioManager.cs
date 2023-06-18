@@ -11,7 +11,7 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager instance;
 
-    private float overallVolume = 1f;
+    private float overallVolume = 0.6f;
     private string mainMenu = "MainMenu";
     private string mainScene = "MainScene";
 
@@ -68,6 +68,7 @@ public class AudioManager : MonoBehaviour
         }   
     }
 
+    // Change the game volume
     public void UpdateOverallVolume(float value)
     {
         overallVolume = value;

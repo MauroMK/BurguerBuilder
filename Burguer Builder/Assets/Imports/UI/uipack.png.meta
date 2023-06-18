@@ -174,9 +174,9 @@ TextureImporter:
       name: Clock_bg
       rect:
         serializedVersion: 2
-        x: 335
+        x: 336
         y: 401
-        width: 35
+        width: 34
         height: 35
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
