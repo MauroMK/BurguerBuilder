@@ -1,5 +1,5 @@
 # BurguerBuilder
-A 3D burguer builder game for the VPT test.
+A 3D burguer builder simulator for the VPT test.
 
 Features
 
