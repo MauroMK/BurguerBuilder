@@ -15,7 +15,7 @@ public class Timer : MonoBehaviour
 
 
     private float maxTimeCatcher;
-    private float gameTotalTimer = 120f;
+    private float gameTotalTimer = 60f;
 
     private void Start() 
     {
